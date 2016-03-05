@@ -1,0 +1,6 @@
+debian/build/objs/nginx usr/sbin
+debian/conf/* etc/nginx
+debian/conf/conf.d/*  etc/nginx/conf.d
+debian/vim/nginx.yaml usr/share/vim/registry
+contrib/vim/* usr/share/vim/addons
+

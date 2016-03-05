@@ -1,0 +1,11 @@
+usr/sbin
+etc/nginx
+etc/nginx/sites-available
+etc/nginx/sites-enabled
+etc/nginx/conf.d
+usr/share/nginx
+usr/share/vim/addons
+usr/share/vim/registry
+var/log/nginx
+var/lib/nginx
+
