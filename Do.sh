@@ -62,12 +62,12 @@ tar -czf ../build/nginx-coolkit_$NGV.orig.tar.gz nginx-$NGV
 echo APT-GET 1
 
 sudo apt-get -y  install build-essential  fakeroot devscripts debhelper 
+
 # build-deps of nginx
 
-echo APT-GET 2
 sudo apt-get install -y autotools-dev debhelper dh-systemd libexpat-dev libgd2-noxpm-dev \
  libgeoip-dev liblua5.1-dev libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
- libxslt1-dev po-debconf zlib1g-dev postgresql-server-dev-9.5 luajit
+ libxslt1-dev po-debconf zlib1g-dev postgresql-server-dev-9.5 luajit perl
 
 cd ../build
 rm -rf nginx-$NGV
