@@ -1,0 +1,21 @@
+debian/build/objs/nginx usr/sbin
+debian/build/objs/src/http/modules/perl/blib/arch/auto/nginx/nginx.bs usr/lib/perl5/auto/nginx
+debian/build/objs/src/http/modules/perl/blib/arch/auto/nginx/nginx.so usr/lib/perl5/auto/nginx
+debian/build/objs/src/http/modules/perl/blib/lib/nginx.pm usr/lib/perl5
+
+
+#!/usr/bin/perl -w   ### will work in future (not in 14.04)
+#
+#use Config;
+#
+#my $vendorarch = substr($Config{vendorarch}, 1);
+#print "debian/build/objs/src/http/modules/perl/blib/arch/auto/nginx/* $vendorarch/auto/nginx\n";
+#print "debian/build/objs/src/http/modules/perl/blib/lib/nginx.pm $vendorarch\n";
+
+debian/conf/* etc/nginx
+debian/conf/conf.d/*  etc/nginx/conf.d
+debian/vim/nginx.yaml usr/share/vim/registry
+contrib/vim/* usr/share/vim/addons
+
+
+

@@ -49,7 +49,10 @@ cp -r ./openresty-echo-nginx-module-$ECHOA ./nginx-$NGV/add-modules/openresty-ec
 test -d ./nginx-$NGV/debian/ || mkdir ./nginx-$NGV/debian
 cp -r ../debian/* ./nginx-$NGV/debian/
 
-
+RELEASE=$(lsb_release -cs)
+if [ -d ../debian-$RELEASE ]; then ## файлы, специфичные для отдельного релиза
+	cp ../debian-$RELEASE/* ./nginx-$NGV/debian/
+fi
 #  dch --create -v 1.8.1-1 - --package nginx-coolkit
 
 ## make the tarball 
