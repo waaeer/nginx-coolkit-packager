@@ -9,8 +9,7 @@ print "debian/build/objs/src/http/modules/perl/blib/lib/nginx.pm $vendorarch\n";
 print "debian/conf/* etc/nginx
 debian/conf/conf.d/*  etc/nginx/conf.d
 debian/vim/nginx.yaml usr/share/vim/registry
-contrib/vim/* usr/share/vim/addons
-\n";
+contrib/vim/* usr/share/vim/addons\n";
 
 
 
