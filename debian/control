@@ -20,7 +20,7 @@ Build-Depends: autotools-dev,
                po-debconf,
                zlib1g-dev,
 			   luajit,
-               postgresql-server-dev-9.5
+               postgresql-server-dev-9.5 | postgrespro-server-dev-9.5
 
 Package: nginx-coolkit
 Architecture: any
