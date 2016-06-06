@@ -62,8 +62,6 @@ tar -czf ../build/nginx-coolkit_$NGV.orig.tar.gz nginx-$NGV
 
 ## package it
 
-echo APT-GET 1
-
 sudo apt-get -y  install build-essential  fakeroot devscripts debhelper 
 
 # build-deps of nginx
