@@ -12,25 +12,24 @@ test -d work || mkdir work
 cd work
 
 echo geting software
-echo  nginx-$NGV
+echo  nginx-$NGV ----------------
 test -f nginx-$NGV.tar.gz    || wget -c http://nginx.org/download/nginx-$NGV.tar.gz
-echo nginx-upload-module
+echo nginx-upload-module ----------
 test -d nginx-upload-module || (git clone https://github.com/vkholodkov/nginx-upload-module && (cd nginx-upload-module && git checkout 2.2))
-echo nginx-upload-progress-module
+echo nginx-upload-progress-module ----------
 test -d nginx-upload-progress-module ||  git clone git://github.com/masterzen/nginx-upload-progress-module.git 
-#unavailable
-echo echo-nginx-module
+echo echo-nginx-module ------------
 test -f nginx-$ECHO.zip || wget --no-check-certificate -c https://github.com/agentzh/echo-nginx-module/zipball/v$ECHO -O nginx-$ECHO.zip
 #test -d echo-nginx-module ||git clone https://github.com/openresty/echo-nginx-module.git
-echo ngx_cache_purge
+echo ngx_cache_purge ------------
 test -d ngx_cache_purge || git clone git://github.com/FRiCKLE/ngx_cache_purge.git 
-echo lua-nginx-module
+echo lua-nginx-module -------------
 test -f v$LUAMOD.tar.gz || wget -c https://github.com/openresty/lua-nginx-module/archive/v$LUAMOD.tar.gz -O v$LUAMOD.tar.gz
-echo ngx_devel_kit
+echo ngx_devel_kit ----------------
 test -f v$NDK.tar.gz    || wget -c https://github.com/simpl/ngx_devel_kit/archive/v$NDK.tar.gz -O ./v$NDK.tar.gz
-echo ngx_postgres
+echo ngx_postgres --------------
 test -f $NGINXPGV.tar.gz|| wget -c https://github.com/FRiCKLE/ngx_postgres/archive/$NGINXPGV.tar.gz 
-echo nginx-auth-ldap
+echo nginx-auth-ldap ------------
 test -d nginx-auth-ldap || git clone https://github.com/kvspb/nginx-auth-ldap.git
 
 test -d ./nginx-$NGV                         || tar -xzf ./nginx-$NGV.tar.gz
@@ -135,6 +134,7 @@ rm -rf nginx-$NGV
 tar xzf nginx-coolkit_$NGV.orig.tar.gz
 cd  nginx-$NGV
 checkver
+dpkg-source --commit
 debuild -us -uc
 
 exit 0
