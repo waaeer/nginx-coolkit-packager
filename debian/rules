@@ -64,7 +64,8 @@ configure_flags := \
 			--add-module=$(MODULESDIR)/lua-nginx-module \
 			--add-module=$(MODULESDIR)/ngx_devel_kit \
 			--add-module=$(MODULESDIR)/ngx_postgres \
-			--add-module=$(MODULESDIR)/openresty-echo-nginx-module
+			--add-module=$(MODULESDIR)/openresty-echo-nginx-module \
+			--add-module=$(MODULESDIR)/nginx-auth-ldap
 
 %:
 	dh $@ --with systemd

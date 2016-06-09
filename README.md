@@ -5,5 +5,10 @@ HowTo:
 
 Set versions inside Do.sh and just run it.
 
+## 2016june07
+Added procedure to patch against CVE-2016-4450.
+Added module nginx-auth-ldap.	
+
+
 
 
