@@ -19,19 +19,20 @@ Build-Depends: autotools-dev,
                libxslt1-dev,
                po-debconf,
                zlib1g-dev,
-			   luajit,
+               luajit,
+	       libldap2-dev,		
                postgresql-server-dev-9.5 | postgrespro-server-dev-9.5
 
 Package: nginx-coolkit
 Architecture: any
 Conflicts: nginx, nginx-common, nginx-coolkit-dbg
-Depends: luajit, gd3, libgeoip1, liblua5.1-0
+Depends: luajit, libgd3, libgeoip1, liblua5.1-0
 Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua.
 
 Package: nginx-coolkit-dbg
 Architecture: any
 Conflicts: nginx, nginx-common, nginx-coolkit
-Depends: luajit, gd3, libgeoip1, liblua5.1-0   
+Depends: luajit, libgd3, libgeoip1, liblua5.1-0   
 Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info

@@ -56,16 +56,17 @@ configure_flags := \
 			--with-http_gunzip_module \
 			--with-http_gzip_static_module \
 			--with-http_image_filter_module \
-			--with-http_spdy_module \
 			--with-http_sub_module \
 			--add-module=$(MODULESDIR)/nginx-upload-module \
 			--add-module=$(MODULESDIR)/nginx-upload-progress-module \
 			--add-module=$(MODULESDIR)/ngx_cache_purge \
-			--add-module=$(MODULESDIR)/lua-nginx-module \
 			--add-module=$(MODULESDIR)/ngx_devel_kit \
 			--add-module=$(MODULESDIR)/ngx_postgres \
 			--add-module=$(MODULESDIR)/openresty-echo-nginx-module \
 			--add-module=$(MODULESDIR)/nginx-auth-ldap
+
+#			--add-module=$(MODULESDIR)/lua-nginx-module 
+
 
 %:
 	dh $@ --with systemd

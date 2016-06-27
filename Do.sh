@@ -1,6 +1,7 @@
+#!/bin/bash
 set -e -u
 
-NGV="1.8.1"
+NGV="1.10.1"
 ECHO="0.38rc1"
 ECHOA="6c1f553"
 LUAMOD="0.10.0"
@@ -51,51 +52,52 @@ cp -r ./ngx_postgres-$NGINXPGV             ./nginx-$NGV/add-modules/ngx_postgres
 cp -r ./openresty-echo-nginx-module-$ECHOA ./nginx-$NGV/add-modules/openresty-echo-nginx-module
 cp -r ./nginx-auth-ldap 		   ./nginx-$NGV/add-modules/
 
+
 ## Check if patch is needed and apply if so for eliminating CVE-2016-4450
 ## look at http://mailman.nginx.org/pipermail/nginx-announce/2016/000179.html for details
 ## The problem affects nginx 1.3.9 - 1.11.0.
 ## from 1.9.13 to 1.11.0 this patch http://nginx.org/download/patch.2016.write.txt  
 ## from 1.3.9 to 1.9.12 this patch http://nginx.org/download/patch.2016.write2.txt 
-version(){
-    local h t v
+#version(){
+#    local h t v
+#
+#    [[ $2 = "$1" || $2 = "$3" ]] && return 0
+#
+#    v=$(printf '%s\n' "$@" | sort -V)
+#    h=$(head -n1 <<<"$v")
+#    t=$(tail -n1 <<<"$v")
+#
+#    [[ $2 != "$h" && $2 != "$t" ]]
+#}
+#
+#apply-CVE-2016-4450() {
+# wget $1 -O CVE-2016-4450.patch
+# patch -p0 < CVE-2016-4450.patch
+#}
+#
+#checkver(){
+#
+#VLOW=1.3.9
+#VMID1=1.9.12
+#VMID2=1.9.13
+#VHIGH=1.10.0
 
-    [[ $2 = "$1" || $2 = "$3" ]] && return 0
-
-    v=$(printf '%s\n' "$@" | sort -V)
-    h=$(head -n1 <<<"$v")
-    t=$(tail -n1 <<<"$v")
-
-    [[ $2 != "$h" && $2 != "$t" ]]
-}
-
-apply-CVE-2016-4450() {
-wget $1 -O CVE-2016-4450.patch
-patch -p0 < CVE-2016-4450.patch
-}
-
-checkver(){
-
-VLOW=1.3.9
-VMID1=1.9.12
-VMID2=1.9.13
-VHIGH=1.11.0
-
-if version "$VLOW" "$NGV" "VHIGH"
-then
-
-        if version "$VLOW" "$NGV" "$VMID1"
-        then
-                apply-CVE-2016-4450 http://nginx.org/download/patch.2016.write2.txt
-        fi
-        if version "$VMID2" "$NGV" "$VHIGH"
-        then
-                apply-CVE-2016-4450 http://nginx.org/download/patch.2016.write.txt
-        fi
-
-else
-        echo not affected
-fi
-} 
+#if version "$VLOW" "$NGV" "VHIGH"
+#then
+#
+#        if version "$VLOW" "$NGV" "$VMID1"
+#        then
+#                apply-CVE-2016-4450 http://nginx.org/download/patch.2016.write2.txt
+#        fi
+#        if version "$VMID2" "$NGV" "$VHIGH"
+#        then
+#                apply-CVE-2016-4450 http://nginx.org/download/patch.2016.write.txt
+#        fi
+#
+#else
+#        echo not affected
+#fi
+#} 
 
 #(cd work  rm ./nginx-$NGV.tar.gz)
 #(cd work && rm ./nginx-$ECHO.zip)
@@ -129,14 +131,14 @@ sudo apt-get -y  install build-essential  fakeroot devscripts debhelper
 
 sudo apt-get install -y autotools-dev debhelper dh-systemd libexpat-dev libgd2-noxpm-dev \
  libgeoip-dev liblua5.1-dev libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
- libxslt1-dev po-debconf zlib1g-dev  luajit perl
+ libxslt1-dev po-debconf zlib1g-dev  luajit perl libldap2-dev
 sudo apt-get install -y postgrespro-server-dev-9.5 || sudo apt-get install -y postgresql-server-dev-9.5 ||dpkg -i  http://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-9.5/postgresql-server-dev-9.5_9.5.3-1.pgdg14.04+1_amd64.deb
 
 cd ../build
 rm -rf nginx-$NGV
 tar xzf nginx-coolkit_$NGV.orig.tar.gz
 cd  nginx-$NGV
-checkver
+#checkver
 dpkg-source --commit
 debuild -us -uc
 
