@@ -113,6 +113,8 @@ RELEASE=$(lsb_release -cs)
 if [ -d ../debian-$RELEASE ]; then ## файлы, специфичные для отдельного релиза
 	cp ../debian-$RELEASE/* ./nginx-$NGV/debian/
 fi
+
+perl -pi -e 's/nginx-coolkit \(([^\)]+)\)/nginx-coolkit ($1~'$RELEASE')/' ./nginx-$NGV/debian/changelog
 #  dch --create -v 1.8.1-1 - --package nginx-coolkit
 
 ## make the tarball 
