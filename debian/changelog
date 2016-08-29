@@ -1,5 +1,14 @@
-nginx-coolkit (1.8.1-1) unstable; urgency=medium
+nginx-coolkit (1.10.1-2) unstable; urgency=medium
 
+  [ Ivan Panchenko ]
+  * Fixed dependencies
+
+
+ -- Ivan Panchenko <wao@mail.ru>  Mon, 29 Aug 2016 05:02:06 +0200
+
+nginx-coolkit (1.10.1-1) UNRELEASED; urgency=medium
+
+  [ Ivan Panchenko ]
   * -
 
- -- Ivan Panchenko <wao@mail.ru>  Sat, 05 Mar 2016 11:34:52 +0300
+ -- Ivan Panchenko <wao@mail.ru>  Mon, 27 Jun 2016 05:02:06 +0200
