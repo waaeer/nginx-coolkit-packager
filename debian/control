@@ -21,8 +21,7 @@ Build-Depends: autotools-dev,
                zlib1g-dev,
                luajit,
 	       libldap2-dev,	
-			   libc,
-				perlapi,	
+			build-essential,
                postgresql-server-dev-9.5 | postgrespro-server-dev-9.5
 
 Package: nginx-coolkit
