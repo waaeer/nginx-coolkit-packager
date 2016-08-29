@@ -144,6 +144,9 @@ cd  nginx-$NGV
 dpkg-source --commit
 debuild -us -uc
 
+cd ..
+rm -rf nginx-$NGV   # cleanup 
+
 exit 0
 
 
