@@ -4,31 +4,17 @@ nginx-coolkit (1.10.2-1) UNRELEASED; urgency=medium
 
  --  Ivan Panchenko <wao@mail.ru>  Wed, 16 Nov 2016 17:30:14 +0100
 
-<<<<<<< HEAD
-=======
-
--- Ivan Panchenko <wao@mail.ru>  Wed, 16 Nov Aug 2016 15:02:06 +0300
->>>>>>> d66a8f07c68448333daee01b37423c61b198abc7
-
 nginx-coolkit (1.10.1-2) unstable; urgency=medium
 
   [ Ivan Panchenko ]
   * Fixed dependencies
 
 
-<<<<<<< HEAD
  --  Ivan Panchenko <wao@mail.ru>  Mon, 29 Aug 2016 05:02:06 +0200
-=======
--- Ivan Panchenko <wao@mail.ru>  Mon, 29 Aug 2016 05:02:06 +0200
->>>>>>> d66a8f07c68448333daee01b37423c61b198abc7
 
 nginx-coolkit (1.10.1-1) UNRELEASED; urgency=medium
 
   [ Ivan Panchenko ]
   * -
 
-<<<<<<< HEAD
  --  Ivan Panchenko <wao@mail.ru>  Mon, 27 Jun 2016 05:02:06 +0200
-=======
--- Ivan Panchenko <wao@mail.ru>  Mon, 27 Jun 2016 05:02:06 +0200
->>>>>>> d66a8f07c68448333daee01b37423c61b198abc7
