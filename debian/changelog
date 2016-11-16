@@ -1,3 +1,10 @@
+nginx-coolkit (1.10.2-1) unstable; urgency=medium
+
+  [ Ivan Panchenko ]
+  * Added lua and set_misc
+
+ -- Ivan Panchenko <wao@mail.ru>  Wed, 16 Nov Aug 2016 15:02:06 +0300
+
 nginx-coolkit (1.10.1-2) unstable; urgency=medium
 
   [ Ivan Panchenko ]
