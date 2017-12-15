@@ -63,7 +63,7 @@ cp -r ./nginx-upload-progress-module       ./nginx-$NGV/add-modules/
 cp -r ./lua-nginx-module-$LUAMOD           ./nginx-$NGV/add-modules/lua-nginx-module
 cp -r ./ngx_devel_kit-$NDK                 ./nginx-$NGV/add-modules/ngx_devel_kit
 cp -r ./ngx_postgres-$NGINXPGV             ./nginx-$NGV/add-modules/ngx_postgres
-cp -r ./openresty-echo-nginx-module-$ECHOA ./nginx-$NGV/add-modules/openresty-echo-nginx-module
+cp -r ./echo-nginx-module-$ECHO            ./nginx-$NGV/add-modules/echo-nginx-module
 cp -r ./nginx-auth-ldap 		   ./nginx-$NGV/add-modules/
 cp -r ./set-misc-nginx-module-$SETMISC     ./nginx-$NGV/add-modules/set-misc-nginx-module
 
