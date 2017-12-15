@@ -149,7 +149,7 @@ sudo apt-get -y  install build-essential  fakeroot devscripts debhelper
 sudo apt-get install -y autotools-dev debhelper dh-systemd libexpat-dev libgd2-noxpm-dev \
  libgeoip-dev liblua5.1-dev libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
  libxslt1-dev po-debconf zlib1g-dev  luajit perl libldap2-dev
-sudo apt-get install postgresql-server-dev-10 
+sudo apt-get install -y libpq-dev 
 
 cd ../build
 rm -rf nginx-$NGV
