@@ -22,7 +22,8 @@ Build-Depends: autotools-dev,
                luajit,
 	       libldap2-dev,	
 			build-essential,
-               libpq-dev
+               libpq-dev,
+				libmd-dev
 
 Package: nginx-coolkit
 Architecture: any
