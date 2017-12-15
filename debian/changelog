@@ -1,3 +1,9 @@
+nginx-coolkit (1.12.2-1) unstable; urgency=medium
+
+  * new versions
+
+ --  Ivan Panchenko <wao@mail.ru>  Fri, 15 Dec 2017 21:59:19 +0300
+
 nginx-coolkit (1.10.2-1) unstable; urgency=medium
 
   * fixed bugs 
