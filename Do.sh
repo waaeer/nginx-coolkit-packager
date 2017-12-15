@@ -149,7 +149,7 @@ sudo apt-get -y  install build-essential  fakeroot devscripts debhelper
 sudo apt-get install -y autotools-dev debhelper dh-systemd libexpat-dev libgd2-noxpm-dev \
  libgeoip-dev liblua5.1-dev libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
  libxslt1-dev po-debconf zlib1g-dev  luajit perl libldap2-dev
-sudo apt-get install -y postgrespro-server-dev-9.5 || sudo apt-get install -y postgresql-server-dev-9.5 ||dpkg -i  http://apt.postgresql.org/pub/repos/apt/pool/main/p/postgresql-9.5/postgresql-server-dev-9.5_9.5.3-1.pgdg14.04+1_amd64.deb
+sudo apt-get install postgresql-server-dev-10 
 
 cd ../build
 rm -rf nginx-$NGV
