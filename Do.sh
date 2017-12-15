@@ -3,7 +3,7 @@ set -e -u
 
 NGV="1.12.2"
 ECHO="0.61"
-ECHOA="6c1f553"
+ECHOA="d95da35"
 LUAMOD="0.10.11"
 NDK="0.3.0"
 NGINXPGV="1.0rc7"
@@ -47,7 +47,7 @@ echo nginx-set_misc
 test -d setmisc.tgz || wget -O setmisc.tgz -c https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
 
 test -d ./nginx-$NGV                         || tar -xzf ./nginx-$NGV.tar.gz
-test -d ./echo-nginx-module-$ECHO            || unzip    ./nginx-$ECHO.zip
+test -d ./echo-nginx-module-$ECHOA           || unzip    ./nginx-$ECHO.zip
 test -d ./lua-nginx-module-$LUAMOD           || tar -xzf ./v$LUAMOD.tar.gz
 test -d ./ngx_devel_kit-$NDK                 || tar -xzf ./v$NDK.tar.gz
 test -d ./ngx_postgres-$NGINXPGV             || tar -xzf ./$NGINXPGV.tar.gz
@@ -63,7 +63,7 @@ cp -r ./nginx-upload-progress-module       ./nginx-$NGV/add-modules/
 cp -r ./lua-nginx-module-$LUAMOD           ./nginx-$NGV/add-modules/lua-nginx-module
 cp -r ./ngx_devel_kit-$NDK                 ./nginx-$NGV/add-modules/ngx_devel_kit
 cp -r ./ngx_postgres-$NGINXPGV             ./nginx-$NGV/add-modules/ngx_postgres
-cp -r ./echo-nginx-module-$ECHO            ./nginx-$NGV/add-modules/echo-nginx-module
+cp -r ./echo-nginx-module-$ECHOA           ./nginx-$NGV/add-modules/echo-nginx-module
 cp -r ./nginx-auth-ldap 		   ./nginx-$NGV/add-modules/
 cp -r ./set-misc-nginx-module-$SETMISC     ./nginx-$NGV/add-modules/set-misc-nginx-module
 
