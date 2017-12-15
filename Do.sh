@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.10.2"
-ECHO="0.38rc1"
+NGV="1.12.2"
+ECHO="0.61"
 ECHOA="6c1f553"
-LUAMOD="0.10.7"
+LUAMOD="0.10.11"
 NDK="0.3.0"
 NGINXPGV="1.0rc7"
 SETMISC="0.31"
@@ -47,7 +47,7 @@ echo nginx-set_misc
 test -d setmisc.tgz || wget -O setmisc.tgz -c https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
 
 test -d ./nginx-$NGV                         || tar -xzf ./nginx-$NGV.tar.gz
-test -d ./openresty-echo-nginx-module-$ECHOA || unzip    ./nginx-$ECHO.zip
+test -d ./echo-nginx-module-$ECHO            || unzip    ./nginx-$ECHO.zip
 test -d ./lua-nginx-module-$LUAMOD           || tar -xzf ./v$LUAMOD.tar.gz
 test -d ./ngx_devel_kit-$NDK                 || tar -xzf ./v$NDK.tar.gz
 test -d ./ngx_postgres-$NGINXPGV             || tar -xzf ./$NGINXPGV.tar.gz
