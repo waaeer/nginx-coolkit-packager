@@ -28,7 +28,7 @@ endif
 
 # configure flags
 configure_flags := \
-			--with-cc-opt="$(debian_cflags)" \
+			--with-cc-opt="-DNGX_HAVE_OPENSSL_SHA1_H -DNGX_OPENSSL_MD5 -DNGX_HAVE_OPENSSL_MD5_H $(debian_cflags)" \
 			--with-ld-opt="$(debian_ldflags)" \
 			--prefix=/usr/share/nginx \
 			--conf-path=/etc/nginx/nginx.conf \
