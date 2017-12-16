@@ -71,6 +71,9 @@ cp -r ./nginx-auth-ldap 				   ./nginx-$NGV/add-modules/
 cp -r ./set-misc-nginx-module-$SETMISC     ./nginx-$NGV/add-modules/set-misc-nginx-module
 
 
+## patch for OpenSSL 1.1.*
+(cd ./nginx-$NGV/add-modules/lua-nginx-module && patch -p1 < ../../../../mod-lua-for-openssl1.1.patch )
+
 ## Check if patch is needed and apply if so for eliminating CVE-2016-4450
 ## look at http://mailman.nginx.org/pipermail/nginx-announce/2016/000179.html for details
 ## The problem affects nginx 1.3.9 - 1.11.0.
