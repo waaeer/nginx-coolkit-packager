@@ -28,7 +28,6 @@ endif
 
 # configure flags
 configure_flags := \
-			--with-debug \
 			--with-cc-opt="$(debian_cflags)" \
 			--with-ld-opt="$(debian_ldflags)" \
 			--prefix=/usr/share/nginx \
@@ -69,7 +68,7 @@ configure_flags := \
 
 
 %:
-	dh $@ --with systemd
+	dh $@ --with systemd --parallel
 
 override_dh_auto_configure: config.arch
 override_dh_auto_build:     build.arch
