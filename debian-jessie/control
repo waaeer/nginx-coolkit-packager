@@ -1,0 +1,39 @@
+Source: nginx-coolkit
+Maintainer: Ivan Panchenko <wao@mail.ru>
+Section: httpd
+Priority: optional
+Standards-Version: 3.9.7
+Build-Depends: autotools-dev,
+               debhelper (>= 9),
+               dh-systemd (>= 1.5),
+               dpkg-dev (>= 1.15.5),
+               libexpat-dev,
+               libgd-dev,
+               libgeoip-dev,
+               liblua5.1-0-dev,
+               libmhash-dev,
+               libpam0g-dev,
+               libpcre3-dev,
+               libperl-dev,
+               libssl-dev,
+               libxslt1-dev,
+               po-debconf,
+               zlib1g-dev,
+               luajit,
+	       libldap2-dev,	
+			build-essential,
+               libpq-dev
+
+Package: nginx-coolkit
+Architecture: any
+Conflicts: nginx, nginx-common, nginx-coolkit-dbg
+Depends: luajit, libgd3, libgeoip1, liblua5.1-0, libpq5
+Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
+ including the old nginx-upload module, postgres module, embedded perl and lua.
+
+Package: nginx-coolkit-dbg
+Architecture: any
+Conflicts: nginx, nginx-common, nginx-coolkit
+Depends: luajit, libgd3, libgeoip1, liblua5.1-0, libpq   
+Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
+ including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info
