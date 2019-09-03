@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.12.2"
+NGV="1.14.1"
 ECHO="0.61"
 ECHOA="d95da35"
 LUAMOD="0.10.11"
@@ -19,7 +19,8 @@ echo  nginx-$NGV ----------------
 test -f nginx-$NGV.tar.gz    || wget -c http://nginx.org/download/nginx-$NGV.tar.gz
 
 echo nginx-upload-module ----------
-test -d nginx-upload-module || (git clone https://github.com/vkholodkov/nginx-upload-module && (cd nginx-upload-module && git checkout 2.2))
+#test -d nginx-upload-module || (git clone https://github.com/vkholodkov/nginx-upload-module && (cd nginx-upload-module && git checkout 2.255))
+test -d nginx-upload-module || (git clone https://github.com/fdintino/nginx-upload-module && (cd nginx-upload-module && git checkout master))
 
 echo nginx-upload-progress-module ----------
 test -d nginx-upload-progress-module ||  git clone git://github.com/masterzen/nginx-upload-progress-module.git 
