@@ -6,7 +6,10 @@ NGV="1.18.0"
 ECHO="0.62rc1"
 ECHOA="996412d"
 # https://github.com/openresty/lua-nginx-module/releases
-LUAMOD="0.10.16rc5"
+LUAMOD="0.10.15"
+#
+# https://github.com/openresty/lua-resty-core/releases
+#LUARCORE="0.1.18rc4"
 # https://github.com/vision5/ngx_devel_kit/releases
 NDK="0.3.1"
 # https://github.com/FRiCKLE/ngx_postgres/releases
@@ -38,6 +41,10 @@ echo ngx_cache_purge ------------
 test -d ngx_cache_purge || git clone git://github.com/FRiCKLE/ngx_cache_purge.git 
 
 # 
+#echo lua-resty-core ------------
+#test -f v$LUARCORE.tar.gz || https://github.com/openresty/lua-resty-core/archive/v$LUARCORE.tar.gz
+
+#
 echo lua-nginx-module -------------
 test -f v$LUAMOD.tar.gz || wget -c https://github.com/openresty/lua-nginx-module/archive/v$LUAMOD.tar.gz -O v$LUAMOD.tar.gz
 
