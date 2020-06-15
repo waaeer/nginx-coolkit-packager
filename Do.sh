@@ -1,13 +1,18 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.14.1"
-ECHO="0.61"
-ECHOA="d95da35"
-LUAMOD="0.10.11"
-NDK="0.3.0"
+NGV="1.18.0"
+# https://github.com/openresty/echo-nginx-module/releases
+ECHO="0.62rc1"
+ECHOA="996412d"
+# https://github.com/openresty/lua-nginx-module/releases
+LUAMOD="0.10.16rc5"
+# https://github.com/vision5/ngx_devel_kit/releases
+NDK="0.3.1"
+# https://github.com/FRiCKLE/ngx_postgres/releases
 NGINXPGV="1.0rc7"
-SETMISC="0.31"
+# https://github.com/openresty/set-misc-nginx-module/releases
+SETMISC="0.32"
 
 test -d work || mkdir work
 
@@ -32,6 +37,7 @@ test -f nginx-$ECHO.zip || wget --no-check-certificate -c https://github.com/age
 echo ngx_cache_purge ------------
 test -d ngx_cache_purge || git clone git://github.com/FRiCKLE/ngx_cache_purge.git 
 
+# 
 echo lua-nginx-module -------------
 test -f v$LUAMOD.tar.gz || wget -c https://github.com/openresty/lua-nginx-module/archive/v$LUAMOD.tar.gz -O v$LUAMOD.tar.gz
 
@@ -73,7 +79,9 @@ cp -r ./set-misc-nginx-module-$SETMISC     ./nginx-$NGV/add-modules/set-misc-ngi
 
 
 ## patch for OpenSSL 1.1.*
-(cd ./nginx-$NGV/add-modules/lua-nginx-module && patch -p1 < ../../../../mod-lua-for-openssl1.1.patch )
+#echo "patching lua for openssl"
+# not needed more?
+#(cd ./nginx-$NGV/add-modules/lua-nginx-module && patch -p1 < ../../../../mod-lua-for-openssl1.1.patch )
 
 ## Check if patch is needed and apply if so for eliminating CVE-2016-4450
 ## look at http://mailman.nginx.org/pipermail/nginx-announce/2016/000179.html for details
@@ -153,15 +161,23 @@ sudo apt-get -y  install build-essential  fakeroot devscripts debhelper
 
 # build-deps of nginx
 
+#
 sudo apt-get install -y autotools-dev debhelper dh-systemd libexpat-dev  \
- libgeoip-dev liblua5.1-dev libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
- libxslt1-dev po-debconf zlib1g-dev  luajit perl libldap2-dev
+ libgeoip-dev liblua5.1-dev  libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
+ libxslt1-dev po-debconf zlib1g-dev  luajit libluajit-5.1-dev perl libldap2-dev libmd-dev libgd-dev
 sudo apt-get install -y libpq-dev 
 
 cd ../build
 rm -rf nginx-$NGV
 tar xzf nginx-coolkit_$NGV.orig.tar.gz
 cd  nginx-$NGV
+
+if [ -f /usr/include/luajit-2.1/luajit.h ]; then
+  export LUAJIT_INC=/usr/include/luajit-2.1
+  ## not yet supported by nginx luajit module
+fi
+
+
 #checkver
 dpkg-source --commit
 debuild -us -uc -j4
