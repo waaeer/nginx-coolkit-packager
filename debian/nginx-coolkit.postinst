@@ -12,7 +12,7 @@ case "$1" in
     #
     # Allow local admin to override:
     # e.g. dpkg-statoverride --add root adm 0755 /var/log/nginx
-    getent passwd httpd || adduser  --system httpd
+    getent passwd httpd || adduser  --system --no-create-home httpd
     getent group  httpd || groupadd --system httpd
     
     if ! dpkg-statoverride --list "$logdir" >/dev/null; then   
