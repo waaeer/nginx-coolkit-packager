@@ -28,12 +28,12 @@ endif
 
 ifneq ("$(wildcard /usr/include/luajit-2.1)","")
 	debian_cflags += -I/usr/include/luajit-2.1
-    debian_ldflags += -lluagit-5.1
+    debian_ldflags += -lluajit-5.1
 	## not yet supported by nginx luajit module
 else
 ifneq ("$(wildcard /usr/include/luajit-2.0)","")
     debian_cflags += -I/usr/include/luajit-2.0
-    debian_ldflags += -lluagit-5.1
+    debian_ldflags += -lluajit-5.1
 endif
 endif
 
