@@ -62,6 +62,13 @@ test -d ./ngx_devel_kit-$NDK                 || tar -xzf ./v$NDK.tar.gz
 test -d ./set-misc-nginx-module-$SETMISC     || tar -xzf ./setmisc.tgz
 
 test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
+if ! [ -d ./nginx-$NGV/openssl-1.1.1g ] ; then
+    if [ -d /usr/local/src/openssl-1.1.1g ] ; then
+       cp -r /usr/local/src/openssl-1.1.1g ./nginx-$NGV
+    else
+       wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1g.tar.gz | tar -xzf - -C ./nginx-$NGV
+	fi
+fi
 
 rm -rf ./nginx-$NGV/add-modules/*
 
@@ -177,7 +184,7 @@ dpkg-source --commit
 debuild -us -uc -j4
 
 cd ..
-rm -rf nginx-$NGV   # cleanup 
+#rm -rf nginx-$NGV   # cleanup 
 
 exit 0
 

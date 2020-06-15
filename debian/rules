@@ -37,9 +37,9 @@ ifneq ("$(wildcard /usr/include/luajit-2.0)","")
 endif
 endif
 
-ifeq ("$(shell openssl version | perl -ne 'print if /1\.1\.1(\w)/ && $1 ge q/g/')","")
+ifeq ("$(shell openssl version | perl -ne 'print if /1\.1\.1(\w)/ && $$1 ge q/g/')","")
 ## if installed version is unknown or lower than 1.1.1g: use local version
-   openssl_source = --with-openssl=/usr/local/src/openssl-1.1.1g	
+    openssl_source = --with-openssl=$(CURDIR)/openssl-1.1.1g	
 endif
 
 # configure flags
