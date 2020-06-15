@@ -172,12 +172,6 @@ rm -rf nginx-$NGV
 tar xzf nginx-coolkit_$NGV.orig.tar.gz
 cd  nginx-$NGV
 
-if [ -f /usr/include/luajit-2.1/luajit.h ]; then
-  export LUAJIT_INC=/usr/include/luajit-2.1
-  ## not yet supported by nginx luajit module
-fi
-
-
 #checkver
 dpkg-source --commit
 debuild -us -uc -j4
