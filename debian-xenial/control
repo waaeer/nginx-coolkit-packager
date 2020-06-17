@@ -27,16 +27,16 @@ Package: nginx-coolkit
 Provides: nginx
 Replaces: nginx, nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra
 Architecture: any
-Conflicts: nginx, nginx-common, nginx-full, nginx-light, nginx-extra, nginx-coolkit-dbg, libluajit-5.1-common
+Conflicts: nginx,  nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra,libluajit-5.1-common
 Depends: libgd3, libgeoip1, libpq5, libperl5.22
 Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua.
 
 Package: nginx-coolkit-dbg
 Provides: nginx
-Replaces: nginx, nginx-coolkit nginx-common, nginx-full, nginx-light, nginx-extra
+Replaces: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra
 Architecture: any
-Conflicts: nginx, nginx-common, nginx-common, nginx-full, nginx-light, nginx-extra, nginx-coolkit, libluajit-5.1-common
+Conflicts: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra, libluajit-5.1-common
 Depends: libgd3, libgeoip1, libpq5, libperl5.22 
 Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info
