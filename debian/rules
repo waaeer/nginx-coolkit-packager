@@ -26,16 +26,21 @@ ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
 	MAKEFLAGS += -j$(NUMJOBS)
 endif
 
-ifneq ("$(wildcard /usr/include/luajit-2.1)","")
-	debian_cflags += -I/usr/include/luajit-2.1
-    debian_ldflags += -lluajit-5.1
-	## not yet supported by nginx luajit module
-else
-ifneq ("$(wildcard /usr/include/luajit-2.0)","")
-    debian_cflags += -I/usr/include/luajit-2.0
-    debian_ldflags += -lluajit-5.1
-endif
-endif
+####  to use repository luajit:
+##ifneq ("$(wildcard /usr/include/luajit-2.1)","")
+##	debian_cflags += -I/usr/include/luajit-2.1
+##    debian_ldflags += -lluajit-5.1
+##	## not yet supported by nginx luajit module
+##else
+##ifneq ("$(wildcard /usr/include/luajit-2.0)","")
+##    debian_cflags += -I/usr/include/luajit-2.0
+##    debian_ldflags += -lluajit-5.1
+##endif
+##endif
+
+# Now we use luajit from openresty:
+debian_cflags += -I$(shell pwd)/local/include/luajit-2.1
+debian_ldflags += -L$(shell pwd)/local/lib -lluajit-5.1
 
 ifeq ("$(shell openssl version | perl -ne 'print if /1\.1\.1(\w)/ && $$1 ge q/g/')","")
 ## if installed version is unknown or lower than 1.1.1g: use local version

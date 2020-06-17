@@ -6,10 +6,17 @@ NGV="1.18.0"
 ECHO="0.62rc1"
 ECHOA="996412d"
 # https://github.com/openresty/lua-nginx-module/releases
-LUAMOD="0.10.15"
+LUAMOD="0.10.16rc5"
+
+# https://github.com/openresty/luajit2/releases
+LUARJIT2="2.1-20200102"
 #
+#  Required by Lua module since 0.10.16
 # https://github.com/openresty/lua-resty-core/releases
-#LUARCORE="0.1.18rc4"
+LUARCORE="0.1.18rc4"
+# https://github.com/openresty/lua-resty-lrucache/releases
+LUARLRUCACHE="0.10rc1"
+
 # https://github.com/vision5/ngx_devel_kit/releases
 NDK="0.3.1"
 # https://github.com/FRiCKLE/ngx_postgres/releases
@@ -41,10 +48,14 @@ echo ngx_cache_purge ------------
 test -d ngx_cache_purge || git clone git://github.com/FRiCKLE/ngx_cache_purge.git 
 
 # 
-#echo lua-resty-core ------------
-#test -f v$LUARCORE.tar.gz || https://github.com/openresty/lua-resty-core/archive/v$LUARCORE.tar.gz
+echo lua-resty-core ------------
+test -f v$LUARCORE.tar.gz     || wget -c https://github.com/openresty/lua-resty-core/archive/v$LUARCORE.tar.gz
+test -f v$LUARLRUCACHE.tar.gz || wget -c https://github.com/openresty/lua-resty-lrucache/archive/v$LUARLRUCACHE.tar.gz
 
-#
+echo luajit by openresty ---
+test -f v$LUARJIT2.tar.gz     || wget -c https://github.com/openresty/luajit2/archive/v$LUARJIT2.tar.gz
+
+
 echo lua-nginx-module -------------
 test -f v$LUAMOD.tar.gz || wget -c https://github.com/openresty/lua-nginx-module/archive/v$LUAMOD.tar.gz -O v$LUAMOD.tar.gz
 
@@ -62,7 +73,8 @@ echo nginx-set_misc
 test -d setmisc.tgz || wget -O setmisc.tgz -c https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
 
 test -d ./nginx-$NGV                         || tar -xzf ./nginx-$NGV.tar.gz
-test -d ./openresty-echo-nginx-module-$ECHOA           || unzip    ./nginx-$ECHO.zip
+test -d ./openresty-echo-nginx-module-$ECHOA || unzip    ./nginx-$ECHO.zip
+test -d ./luajit2-$LUARJIT2.tar.gz           || tar -xzf ./v$LUARJIT2.tar.gz
 test -d ./lua-nginx-module-$LUAMOD           || tar -xzf ./v$LUAMOD.tar.gz
 test -d ./ngx_devel_kit-$NDK                 || tar -xzf ./v$NDK.tar.gz
 #test -d ./ngx_postgres-$NGINXPGV             || tar -xzf ./$NGINXPGV.tar.gz
@@ -76,6 +88,13 @@ if ! [ -d ./nginx-$NGV/openssl-1.1.1g ] ; then
        wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1g.tar.gz | tar -xzf - -C ./nginx-$NGV
 	fi
 fi
+
+## $LUARJIT2.tar.gz
+test -d ./lua-resty-core-$LUARCORE                        || tar -xzf v$LUARCORE.tar.gz
+(cd     ./lua-resty-core-$LUARCORE         && make install PREFIX=../nginx-$NGV/local ) 
+test -d ./lua-resty-lrucache-$LUARLRUCACHE                || tar -xzf v$LUARLRUCACHE.tar.gz
+(cd     ./lua-resty-lrucache-$LUARLRUCACHE && make install PREFIX=../nginx-$NGV/local DESTDIR=.) 
+
 
 rm -rf ./nginx-$NGV/add-modules/*
 
@@ -161,6 +180,14 @@ fi
 perl -pi -e 's/nginx-coolkit \(([^\)]+)\)/nginx-coolkit ($1~'$RELEASE')/' ./nginx-$NGV/debian/changelog
 #  dch --create -v 1.8.1-1 - --package nginx-coolkit
 
+# Luajit2 (resty version)
+
+(cd luajit2-$LUARJIT2 && make PREFIX=/usr && make install PREFIX=`pwd`/../nginx-$NGV/local )
+
+
+
+
+
 ## make the tarball 
 test -d ../build || mkdir ../build
 
@@ -178,7 +205,7 @@ sudo apt-get -y  install build-essential  fakeroot devscripts debhelper
 #
 sudo apt-get install -y autotools-dev debhelper dh-systemd libexpat-dev  \
  libgeoip-dev liblua5.1-dev  libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
- libxslt1-dev po-debconf zlib1g-dev  luajit libluajit-5.1-dev perl libldap2-dev libmd-dev libgd-dev
+ libxslt1-dev po-debconf zlib1g-dev perl libldap2-dev libmd-dev libgd-dev
 sudo apt-get install -y libpq-dev 
 
 cd ../build
@@ -191,8 +218,10 @@ dpkg-source --commit
 debuild -us -uc -j4
 
 cd ..
-#rm -rf nginx-$NGV   # cleanup 
-
+rm -rf nginx-$NGV   # cleanup 
+rm -rf luajit2-*
+rm -rf lua-nginx-module* lua-resty-core-* lua-resty-lrucache-* nginx-auth-ldap* nginx-upload-module* nginx-upload-progress-module*
+rm -rf ngx_cache_purge* ngx_devel_kit-* ngx_postgres openresty-echo-nginx-module-* set-misc-nginx-module-*
 exit 0
 
 

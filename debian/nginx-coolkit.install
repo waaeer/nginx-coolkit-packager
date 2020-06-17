@@ -12,5 +12,7 @@ debian/conf/conf.d/*  etc/nginx/conf.d
 debian/vim/nginx.yaml usr/share/vim/registry
 contrib/vim/* usr/share/vim/addons\n";
 
+# local/lib/*  usr/local/lib
 
-
+print "local/lib/lua/* /usr/share/lua/5.1/\n"; 
+print "local/lib/libluajit* /usr/lib/\n";
