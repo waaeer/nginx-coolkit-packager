@@ -121,7 +121,7 @@ config.arch:
 	cp -Pa $(CURDIR)/contrib $(BUILDDIR)/
 	cp -Pa $(CURDIR)/src $(BUILDDIR)/
 	cp -Pa $(CURDIR)/man $(BUILDDIR)/
-	cd $(BUILDDIR) && ./configure $(configure_flags)
+	cd $(BUILDDIR) && LD_LIBRARY_PATH=`pwd`/../../local/lib ./configure $(configure_flags)
 
 clean:
 	rm -rf $(BUILDDIR)
