@@ -203,10 +203,13 @@ sudo apt-get -y  install build-essential  fakeroot devscripts debhelper
 # build-deps of nginx
 
 #
-sudo apt-get install -y autotools-dev debhelper dh-systemd libexpat-dev  \
+sudo apt-get install -y autotools-dev debhelper \
+ libexpat-dev  \
  libgeoip-dev liblua5.1-dev  libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
  libxslt1-dev po-debconf zlib1g-dev perl libldap2-dev libmd-dev libgd-dev
 sudo apt-get install -y libpq-dev 
+
+sudo apt-get -y install dh-systemd || true;  ## если нет - значит не нужно
 
 cd ../build
 rm -rf nginx-$NGV
