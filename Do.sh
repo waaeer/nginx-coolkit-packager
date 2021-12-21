@@ -89,18 +89,20 @@ test -d ./set-misc-nginx-module-$SETMISC     || tar -xzf ./setmisc.tgz
 echo "Set misc done"
 
 test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
-if ! [ -d ./nginx-$NGV/openssl-1.1.1g ] ; then
-    if [ -d /usr/local/src/openssl-1.1.1g ] ; then
-       cp -r /usr/local/src/openssl-1.1.1g ./nginx-$NGV
+if ! [ -d ./nginx-$NGV/openssl-1.1.1m ] ; then
+    if [ -d /usr/local/src/openssl-1.1.1m, ] ; then
+       cp -r /usr/local/src/openssl-1.1.1m ./nginx-$NGV
     else
        wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1g.tar.gz | tar -xzf - -C ./nginx-$NGV
 	fi
 fi
 
 ## $LUARJIT2.tar.gz
+
+echo Work with lua-resty-core
 test -d ./lua-resty-core-$LUARCORE                        || tar -xzf v$LUARCORE.tar.gz
 (cd     ./lua-resty-core-$LUARCORE         && make install PREFIX=../nginx-$NGV/local ) 
-echo "LyaR $LAURCORE"
+echo "LyaR $LUARCORE"
 test -d ./lua-resty-lrucache-$LUARLRUCACHE                || tar -xzf v$LUARLRUCACHE.tar.gz
 (cd     ./lua-resty-lrucache-$LUARLRUCACHE && make install PREFIX=../nginx-$NGV/local DESTDIR=.) 
 echo "Cache done"
