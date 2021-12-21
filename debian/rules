@@ -42,9 +42,9 @@ endif
 debian_cflags += -I$(shell pwd)/local/include/luajit-2.1
 debian_ldflags += -L$(shell pwd)/local/lib -lluajit-5.1
 
-ifeq ("$(shell openssl version | perl -ne 'print if /1\.1\.1(\w)/ && $$1 ge q/g/')","")
-## if installed version is unknown or lower than 1.1.1g: use local version
-    openssl_source = --with-openssl=$(CURDIR)/openssl-1.1.1g	
+ifeq ("$(shell openssl version | perl -ne 'print if /1\.1\.1(\w)/ && $$1 ge q/m/')","")
+## if installed version is unknown or lower than 1.1.1m: use local version
+    openssl_source = --with-openssl=$(CURDIR)/openssl-1.1.1m	
 endif
 
 # configure flags
