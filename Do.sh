@@ -50,6 +50,8 @@ test -d ngx_cache_purge || git clone git://github.com/FRiCKLE/ngx_cache_purge.gi
 # 
 echo lua-resty-core ------------
 test -f v$LUARCORE.tar.gz     || wget -c https://github.com/openresty/lua-resty-core/archive/v$LUARCORE.tar.gz
+
+echo lua-resty-lrucache ------
 test -f v$LUARLRUCACHE.tar.gz || wget -c https://github.com/openresty/lua-resty-lrucache/archive/v$LUARLRUCACHE.tar.gz
 
 echo luajit by openresty ---
@@ -73,7 +75,9 @@ echo nginx-set_misc
 test -d setmisc.tgz || wget -O setmisc.tgz -c https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
 
 test -d ./nginx-$NGV                         || tar -xzf ./nginx-$NGV.tar.gz
+echo "unzipping nginx-echo"
 test -d ./openresty-echo-nginx-module-$ECHOA || unzip    ./nginx-$ECHO.zip
+echo "open resty done"
 test -d ./luajit2-$LUARJIT2.tar.gz           || tar -xzf ./v$LUARJIT2.tar.gz
 test -d ./lua-nginx-module-$LUAMOD           || tar -xzf ./v$LUAMOD.tar.gz
 test -d ./ngx_devel_kit-$NDK                 || tar -xzf ./v$NDK.tar.gz
