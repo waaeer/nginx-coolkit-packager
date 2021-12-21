@@ -100,9 +100,10 @@ fi
 ## $LUARJIT2.tar.gz
 test -d ./lua-resty-core-$LUARCORE                        || tar -xzf v$LUARCORE.tar.gz
 (cd     ./lua-resty-core-$LUARCORE         && make install PREFIX=../nginx-$NGV/local ) 
+echo "LyaR $LAURCORE"
 test -d ./lua-resty-lrucache-$LUARLRUCACHE                || tar -xzf v$LUARLRUCACHE.tar.gz
 (cd     ./lua-resty-lrucache-$LUARLRUCACHE && make install PREFIX=../nginx-$NGV/local DESTDIR=.) 
-
+echo "Cache done"
 
 rm -rf ./nginx-$NGV/add-modules/*
 
