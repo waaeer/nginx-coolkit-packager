@@ -73,16 +73,20 @@ test -d nginx-auth-ldap || git clone https://github.com/kvspb/nginx-auth-ldap.gi
 
 echo nginx-set_misc
 test -d setmisc.tgz || wget -O setmisc.tgz -c https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
-
+echo "setmisc done"
 test -d ./nginx-$NGV                         || tar -xzf ./nginx-$NGV.tar.gz
 echo "unzipping nginx-echo"
 test -d ./openresty-echo-nginx-module-$ECHOA || unzip    ./nginx-$ECHO.zip
 echo "open resty done"
 test -d ./luajit2-$LUARJIT2.tar.gz           || tar -xzf ./v$LUARJIT2.tar.gz
+echo "Luajit2 done"
 test -d ./lua-nginx-module-$LUAMOD           || tar -xzf ./v$LUAMOD.tar.gz
+echo "lua-nginx-module done"
 test -d ./ngx_devel_kit-$NDK                 || tar -xzf ./v$NDK.tar.gz
+echo "ndkk done"
 #test -d ./ngx_postgres-$NGINXPGV             || tar -xzf ./$NGINXPGV.tar.gz
 test -d ./set-misc-nginx-module-$SETMISC     || tar -xzf ./setmisc.tgz
+echo "Set misc done"
 
 test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
 if ! [ -d ./nginx-$NGV/openssl-1.1.1g ] ; then
