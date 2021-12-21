@@ -89,11 +89,13 @@ test -d ./set-misc-nginx-module-$SETMISC     || tar -xzf ./setmisc.tgz
 echo "Set misc done"
 
 test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
+
 if ! [ -d ./nginx-$NGV/openssl-1.1.1m ] ; then
     if [ -d /usr/local/src/openssl-1.1.1m, ] ; then
        cp -r /usr/local/src/openssl-1.1.1m ./nginx-$NGV
     else
-       wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1g.tar.gz | tar -xzf - -C ./nginx-$NGV
+
+       wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1m.tar.gz | tar -xzf - -C ./nginx-$NGV
 	fi
 fi
 
