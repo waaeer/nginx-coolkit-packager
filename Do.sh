@@ -94,7 +94,7 @@ if ! [ -d ./nginx-$NGV/openssl-1.1.1m ] ; then
     if [ -d /usr/local/src/openssl-1.1.1m, ] ; then
        cp -r /usr/local/src/openssl-1.1.1m ./nginx-$NGV
     else
-
+		echo "getting openssl"
        wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1m.tar.gz | tar -xzf - -C ./nginx-$NGV
 	fi
 fi
