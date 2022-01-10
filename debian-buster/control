@@ -28,7 +28,7 @@ Replaces: nginx, nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx
 Architecture: any
 Conflicts: nginx,  nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra,libluajit-5.1-common
 Depends: libgd3, libgeoip1, libpq5, libperl5.28
-Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
+Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua.
 
 Package: nginx-coolkit-dbg
@@ -37,5 +37,5 @@ Replaces: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-ext
 Architecture: any
 Conflicts: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra, libluajit-5.1-common
 Depends: libgd3, libgeoip1, libpq5, libperl5.28
-Description: This is a special build of Igor Sysoev's Nginx Web/Proxy Server
+Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info
