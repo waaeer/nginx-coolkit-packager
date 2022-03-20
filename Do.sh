@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.18.0"
+NGV="1.20.2"
 # https://github.com/openresty/echo-nginx-module/releases
 ECHO="0.62rc1"
 ECHOA="996412d"
@@ -34,18 +34,20 @@ echo  nginx-$NGV ----------------
 test -f nginx-$NGV.tar.gz    || wget -c http://nginx.org/download/nginx-$NGV.tar.gz
 
 echo nginx-upload-module ----------
-#test -d nginx-upload-module || (git clone https://github.com/vkholodkov/nginx-upload-module && (cd nginx-upload-module && git checkout 2.255))
-test -d nginx-upload-module || (git clone https://github.com/fdintino/nginx-upload-module && (cd nginx-upload-module && git checkout master))
+##test -d nginx-upload-module || (git clone https://github.com/vkholodkov/nginx-upload-module && (cd nginx-upload-module && git checkout 2.255))
+#test -d nginx-upload-module || (git clone https://github.com/fdintino/nginx-upload-module && (cd nginx-upload-module && git checkout master))
+test -d nginx-upload-module || (git clone https://github.com/waaeer/nginx-upload-module && (cd nginx-upload-module && git checkout master))
+
 
 echo nginx-upload-progress-module ----------
-test -d nginx-upload-progress-module ||  git clone git://github.com/masterzen/nginx-upload-progress-module.git 
+test -d nginx-upload-progress-module ||  git clone https://github.com/masterzen/nginx-upload-progress-module.git 
 
 echo echo-nginx-module ------------
 test -f nginx-$ECHO.zip || wget --no-check-certificate -c https://github.com/agentzh/echo-nginx-module/zipball/v$ECHO -O nginx-$ECHO.zip
 
 #test -d echo-nginx-module ||git clone https://github.com/openresty/echo-nginx-module.git
 echo ngx_cache_purge ------------
-test -d ngx_cache_purge || git clone git://github.com/FRiCKLE/ngx_cache_purge.git 
+test -d ngx_cache_purge || git clone https://github.com/FRiCKLE/ngx_cache_purge.git 
 
 # 
 echo lua-resty-core ------------
@@ -90,12 +92,12 @@ echo "Set misc done"
 
 test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
 
-if ! [ -d ./nginx-$NGV/openssl-1.1.1m ] ; then
-    if [ -d /usr/local/src/openssl-1.1.1m, ] ; then
-       cp -r /usr/local/src/openssl-1.1.1m ./nginx-$NGV
+if ! [ -d ./nginx-$NGV/openssl-1.1.1n ] ; then
+    if [ -d /usr/local/src/openssl-1.1.1n, ] ; then
+       cp -r /usr/local/src/openssl-1.1.1n ./nginx-$NGV
     else
 		echo "getting openssl"
-       wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1m.tar.gz | tar -xzf - -C ./nginx-$NGV
+       wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1n.tar.gz | tar -xzf - -C ./nginx-$NGV
 	fi
 fi
 

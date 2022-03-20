@@ -1,3 +1,10 @@
+nginx-coolkit (1.20.2-1) unstable; urgency=medium
+
+  * upgraded nginx to current stable version
+  * upgraded openssl due to CVE-2022-0778
+
+ --  Ivan Panchenko <wao@mail.ru>  Mon, 21 Mar 2022 01:274:01 +0300
+
 nginx-coolkit (1.18.0-1) unstable; urgency=medium
 
   * new versions
