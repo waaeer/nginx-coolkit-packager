@@ -200,9 +200,6 @@ perl -pi -e 's/nginx-coolkit \(([^\)]+)\)/nginx-coolkit ($1~'$RELEASE')/' ./ngin
 (cd luajit2-$LUARJIT2 && make PREFIX=/usr && make install PREFIX=`pwd`/../nginx-$NGV/local )
 
 
-
-
-
 ## make the tarball 
 test -d ../build || mkdir ../build
 
