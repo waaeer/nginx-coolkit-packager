@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.20.2"
+NGV="1.22.1"
 # https://github.com/openresty/echo-nginx-module/releases
 ECHO="0.62rc1"
 ECHOA="996412d"
@@ -23,6 +23,7 @@ NDK="0.3.1"
 NGINXPGV="1.0rc7"
 # https://github.com/openresty/set-misc-nginx-module/releases
 SETMISC="0.32"
+OPENSSL="3.0.7"
 
 test -d work || mkdir work
 
@@ -74,6 +75,7 @@ echo nginx-auth-ldap ------------
 test -d nginx-auth-ldap || git clone https://github.com/kvspb/nginx-auth-ldap.git
 
 echo nginx-set_misc
+
 test -d setmisc.tgz || wget -O setmisc.tgz -c https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
 echo "setmisc done"
 test -d ./nginx-$NGV                         || tar -xzf ./nginx-$NGV.tar.gz
@@ -92,12 +94,12 @@ echo "Set misc done"
 
 test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
 
-if ! [ -d ./nginx-$NGV/openssl-1.1.1n ] ; then
-    if [ -d /usr/local/src/openssl-1.1.1n, ] ; then
-       cp -r /usr/local/src/openssl-1.1.1n ./nginx-$NGV
+if ! [ -d ./nginx-$NGV/openssl-$OPENSSL ] ; then
+    if [ -d /usr/local/src/openssl-$OPENSSL ] ; then
+       cp -r /usr/local/src/openssl-$OPENSSL./nginx-$NGV
     else
 		echo "getting openssl"
-       wget --quiet -O - https://www.openssl.org/source/openssl-1.1.1n.tar.gz | tar -xzf - -C ./nginx-$NGV
+       wget --quiet -O - https://www.openssl.org/source/openssl-$OPENSSL.tar.gz | tar -xzf - -C ./nginx-$NGV
 	fi
 fi
 
