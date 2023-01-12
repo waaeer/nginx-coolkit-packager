@@ -231,7 +231,7 @@ tar xzf nginx-coolkit_$NGV.orig.tar.gz
 cd  nginx-$NGV
 
 #checkver
-dpkg-source --commit
+dpkg-source --build #--commit
 debuild -us -uc -j4
 
 cd ..
