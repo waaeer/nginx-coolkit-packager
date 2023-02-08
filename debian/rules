@@ -2,8 +2,8 @@
 export DH_VERBOSE=1
 
 export DEB_BUILD_MAINT_OPTIONS=hardening=+all
-debian_cflags:=$(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
-debian_ldflags:=$(shell dpkg-buildflags --get LDFLAGS)
+debian_cflags  := $(shell dpkg-buildflags --get CFLAGS) $(shell dpkg-buildflags --get CPPFLAGS)
+debian_ldflags := $(shell dpkg-buildflags --get LDFLAGS)
 
 # export necessary perl hardenging flags
 # see: src/http/modules/perl/Makefile.PL
@@ -13,8 +13,8 @@ export DEBIAN_NGINX_PERL_LDFLAGS
 FLAVOURS := core full light extras
 
 MODULESDIR = $(CURDIR)/add-modules
-BASEDIR = $(CURDIR)
-BUILDDIR = $(CURDIR)/debian/build
+BASEDIR    = $(CURDIR)
+BUILDDIR   = $(CURDIR)/debian/build
 
 DEB_BUILD_ARCH ?=$(shell dpkg-architecture -qDEB_BUILD_ARCH)
 ifeq ($(DEB_BUILD_ARCH),sparc)
@@ -39,13 +39,10 @@ endif
 ##endif
 
 # Now we use luajit from openresty:
-debian_cflags += -I$(shell pwd)/local/include/luajit-2.1
+debian_cflags  += -I$(shell pwd)/local/include/luajit-2.1
 debian_ldflags += -L$(shell pwd)/local/lib -lluajit-5.1
+openssl_source = --with-openssl=$(CURDIR)/add-modules/openssl
 
-#ifeq ("$(shell openssl version | perl -ne 'print if /1\.1\.1(\w)/ && $$1 ge q/n/')","")
-## if installed version is unknown or lower than 1.1.1n: use local version
-    openssl_source = --with-openssl=$(CURDIR)/openssl-3.0.7	
-#endif
 
 # configure flags
 configure_flags := \
@@ -62,7 +59,7 @@ configure_flags := \
 			--http-proxy-temp-path=/var/lib/nginx/proxy \
 			--http-scgi-temp-path=/var/lib/nginx/scgi \
 			--http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
-			--with-pcre-jit \
+			--with-pcre-jit --with-pcre --without-pcre2 \
             --with-http_perl_module \
 			--with-http_ssl_module $(openssl_source) \
 			--with-http_stub_status_module \
@@ -85,11 +82,11 @@ configure_flags := \
 			--add-module=$(MODULESDIR)/set-misc-nginx-module \
 			--add-module=$(MODULESDIR)/nginx-auth-ldap \
 			--add-module=$(MODULESDIR)/lua-nginx-module \
-			--add-module=$(MODULESDIR)/openresty-echo-nginx-module
+			--add-module=$(MODULESDIR)/echo-nginx-module
 
 
 %:
-	dh $@ --with systemd --parallel
+	dh $@  --parallel
 
 override_dh_auto_configure: config.arch
 override_dh_auto_build:     build.arch
@@ -100,8 +97,8 @@ override_dh_clean:          clean.arch
 override_dh_installinit:
 	dh_installinit --no-restart-on-upgrade --no-start --name=nginx-coolkit
 
-override_dh_systemd_enable:
-	dh_systemd_enable --name=nginx
+#override_dh_systemd_enable:
+#	dh_systemd_enable --name=nginx-coolkit
 
 override_dh_installlogrotate:
 	dh_installlogrotate --package nginx-coolkit --name=nginx-coolkit
