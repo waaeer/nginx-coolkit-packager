@@ -35,8 +35,8 @@ cd work
 echo ===== geting software
 et 0 nginx              $NGV          https://nginx.org/download/nginx-$NGV.tar.gz
 
-test -d ./nginx/add-modules || mkdir ./nginx-$NGV/add-modules
-rm  -rf ./nginx/add-modules/*
+test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
+rm  -rf ./nginx-$NGV/add-modules/*
 
 et 1 echo-nginx-module     $ECHO         https://github.com/openresty/echo-nginx-module/archive/refs/tags/v$ECHO.tar.gz
 et 1 lua-resty-core        $LUARCORE     https://github.com/openresty/lua-resty-core/archive/v$LUARCORE.tar.gz
