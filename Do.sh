@@ -16,36 +16,39 @@ OPENSSL="3.0.8"
 
 test -d work || mkdir work
 
+en() { 
+  echo ======= $1 $2
+  test -d $1 || (wget -O - $2 | tar -xzf - )
+}
 
 et () {
-  echo ===== $2-$3
-  test -d    $2  || wget -O - $4 | (tar -xzf - ; mv $2-$3 $2 )
-  if [ "x$1" = "x1" ]; then 
-	cp -r $2 ./nginx/add-modules/
-  fi
+  echo ===== $1-$2
+  test -d    $1  || (wget -O - $3 | (tar -xzf - ; mv $1-$2 $1 ))
+  cp -r $1 ./nginx-$NGV/add-modules/
 }
 
 eg () { 
   echo ===* $1
   test -d   $1 || git clone $2
-  cp -r $1 ./nginx/add-modules/
+  cp -r $1 ./nginx-$NGV/add-modules/
 }
 
 cd work
 echo ===== geting software
-et 0 nginx              $NGV          https://nginx.org/download/nginx-$NGV.tar.gz
 
-test -d ./nginx-$NGV/add-modules || mkdir ./nginx-$NGV/add-modules
+en nginx-$NGV            https://nginx.org/download/nginx-$NGV.tar.gz
+
+test -d ./nginx-$NGV/add-modules || mkdir -p ./nginx-$NGV/add-modules
 rm  -rf ./nginx-$NGV/add-modules/*
 
-et 1 echo-nginx-module     $ECHO         https://github.com/openresty/echo-nginx-module/archive/refs/tags/v$ECHO.tar.gz
-et 1 lua-resty-core        $LUARCORE     https://github.com/openresty/lua-resty-core/archive/v$LUARCORE.tar.gz
-et 1 lua-resty-lrucache    $LUARLRUCACHE https://github.com/openresty/lua-resty-lrucache/archive/v$LUARLRUCACHE.tar.gz
-et 1 luajit2               $LUARJIT2     https://github.com/openresty/luajit2/archive/v$LUARJIT2.tar.gz
-et 1 lua-nginx-module      $LUAMOD       https://github.com/openresty/lua-nginx-module/archive/v$LUAMOD.tar.gz
-et 1 ngx_devel_kit         $NDK          https://github.com/simpl/ngx_devel_kit/archive/v$NDK.tar.gz
-et 1 openssl               $OPENSSL      https://www.openssl.org/source/openssl-$OPENSSL.tar.gz
-et 1 set-misc-nginx-module $SETMISC      https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
+et echo-nginx-module     $ECHO         https://github.com/openresty/echo-nginx-module/archive/refs/tags/v$ECHO.tar.gz
+et lua-resty-core        $LUARCORE     https://github.com/openresty/lua-resty-core/archive/v$LUARCORE.tar.gz
+et lua-resty-lrucache    $LUARLRUCACHE https://github.com/openresty/lua-resty-lrucache/archive/v$LUARLRUCACHE.tar.gz
+et luajit2               $LUARJIT2     https://github.com/openresty/luajit2/archive/v$LUARJIT2.tar.gz
+et lua-nginx-module      $LUAMOD       https://github.com/openresty/lua-nginx-module/archive/v$LUAMOD.tar.gz
+et ngx_devel_kit         $NDK          https://github.com/simpl/ngx_devel_kit/archive/v$NDK.tar.gz
+et openssl               $OPENSSL      https://www.openssl.org/source/openssl-$OPENSSL.tar.gz
+et set-misc-nginx-module $SETMISC      https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
 
 eg ngx_postgres                   https://github.com/konstruxi/ngx_postgres.git
 # https://github.com/FRiCKLE/ngx_postgres/archive/$NGINXPGV.tar.gz 
@@ -61,25 +64,25 @@ eg nginx-upload-module            https://github.com/waaeer/nginx-upload-module
 echo ===== Untarred
 
 ## provide control files according to current debian codename
-test -d ./nginx/debian/ || mkdir ./nginx/debian
-cp -r ../debian/* ./nginx/debian/
+test -d ./nginx-$NGV/debian/ || mkdir ./nginx-$NGV/debian
+cp -r ../debian/* ./nginx-$NGV/debian/
 
 RELEASE=$(lsb_release -cs)
 if [ -d ../debian-$RELEASE ]; then ## файлы, специфичные для отдельного релиза
-	cp ../debian-$RELEASE/* ./nginx/debian/
+	cp ../debian-$RELEASE/* ./nginx-$NGV/debian/
 fi
 
-perl -pi -e 's/nginx-coolkit \(([^\)]+)\)/nginx-coolkit ($1~'$RELEASE')/' ./nginx/debian/changelog
+perl -pi -e 's/nginx-coolkit \(([^\)]+)\)/nginx-coolkit ($1~'$RELEASE')/' ./nginx-$NGV/debian/changelog
 
 # Luajit2 (resty version)
 
-(cd luajit2 && make PREFIX=/usr && make install PREFIX=`pwd`/../nginx/local )
+(cd luajit2 && make PREFIX=/usr && make install PREFIX=`pwd`/../nginx-$NGV/local )
 
 
 ## make the tarball 
 test -d ../build || mkdir ../build
 
-tar -czf ../build/nginx-coolkit_$NGV.orig.tar.gz nginx
+tar -czf ../build/nginx-coolkit_$NGV.orig.tar.gz nginx-$NGV
 
 sudo apt-get install -y autotools-dev debhelper \
  libexpat-dev  \
@@ -90,12 +93,15 @@ sudo apt-get install -y libpq-dev
 sudo apt-get -y install dh-systemd || true;  ## если нет - значит не нужно
 
 cd ../build
-rm -rf nginx
+rm -rf nginx-$NGV
 tar xzf nginx-coolkit_$NGV.orig.tar.gz
-cd  nginx
+cd  nginx-$NGV
 
 #checkver
 #dpkg-source --build #--commit
+
+echo "DEBUILD"
+
 debuild -us -uc -j4
 
 cd ..
