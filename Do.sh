@@ -77,6 +77,10 @@ perl -pi -e 's/nginx-coolkit \(([^\)]+)\)/nginx-coolkit ($1~'$RELEASE')/' ./ngin
 # Luajit2 (resty version)
 
 (cd luajit2 && make PREFIX=/usr && make install PREFIX=`pwd`/../nginx-$NGV/local )
+##
+cp -r lua-resty-core/lib/resty               nginx-$NGV/local/share/lua/5.1/
+cp -r lua-resty-lrucache/lib/resty/lrucache* nginx-$NGV/local/share/lua/5.1/resty/
+
 
 
 ## make the tarball 
