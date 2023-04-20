@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.24.0"
+NGV="1.22.1"               # 1.24 requires patching nginx-upload-module
 
 ECHO="0.63"                # https://github.com/openresty/echo-nginx-module/releases
 LUAMOD="0.10.24"           # https://github.com/openresty/lua-nginx-module/releases
@@ -12,7 +12,7 @@ LUARLRUCACHE="0.13"        # https://github.com/openresty/lua-resty-lrucache/rel
 NDK="0.3.2"                # https://github.com/vision5/ngx_devel_kit/releases
 NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/releases
 SETMISC="0.33"             # https://github.com/openresty/set-misc-nginx-module/releases
-OPENSSL="3.0.8"
+OPENSSL="3.1.0"
 
 test -d work || mkdir work
 
