@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.22.1"               # 1.24 requires patching nginx-upload-module
+NGV="1.24.0"               # 
 
 ECHO="0.63"                # https://github.com/openresty/echo-nginx-module/releases
 LUAMOD="0.10.24"           # https://github.com/openresty/lua-nginx-module/releases
@@ -12,7 +12,7 @@ LUARLRUCACHE="0.13"        # https://github.com/openresty/lua-resty-lrucache/rel
 NDK="0.3.2"                # https://github.com/vision5/ngx_devel_kit/releases
 NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/releases
 SETMISC="0.33"             # https://github.com/openresty/set-misc-nginx-module/releases
-OPENSSL="3.1.0"
+OPENSSL="3.1.1"
 
 test -d work || mkdir work
 
@@ -53,9 +53,9 @@ et set-misc-nginx-module $SETMISC      https://github.com/openresty/set-misc-ngi
 eg ngx_postgres                   https://github.com/konstruxi/ngx_postgres.git
 # https://github.com/FRiCKLE/ngx_postgres/archive/$NGINXPGV.tar.gz 
 
-eg ngx_cache_purge                https://github.com/FRiCKLE/ngx_cache_purge.git 
-eg nginx-auth-ldap                https://github.com/kvspb/nginx-auth-ldap.git
-eg nginx-upload-progress-module   https://github.com/masterzen/nginx-upload-progress-module.git 
+eg ngx_cache_purge                https://github.com/FRiCKLE/ngx_cache_purge 
+eg nginx-auth-ldap                https://github.com/kvspb/nginx-auth-ldap
+eg nginx-upload-progress-module   https://github.com/waaeer/nginx-upload-progress-module 
 eg nginx-upload-module            https://github.com/waaeer/nginx-upload-module
 # (git clone https://github.com/vkholodkov/nginx-upload-module && (cd nginx-upload-module && git checkout 2.255))
 # (git clone https://github.com/fdintino/nginx-upload-module   && (cd nginx-upload-module && git checkout master))

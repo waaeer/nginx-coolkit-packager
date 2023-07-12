@@ -1,3 +1,11 @@
+nginx-coolkit (1.24.0-1) unstable; urgency=medium
+
+  * upgraded nginx to current stable version
+  * used recent patches for upload and upload progress to build them
+  * upgraded openssl
+
+ --  Ivan Panchenko <wao@mail.ru>  Tue, 11 Jul 2023 14:00:00 +0300
+
 nginx-coolkit (1.22.1-1) unstable; urgency=medium
 
   * upgraded nginx to current stable version
