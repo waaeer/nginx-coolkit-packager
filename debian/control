@@ -33,7 +33,7 @@ Provides: nginx
 Replaces: nginx, nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra
 Architecture: any
 Conflicts: nginx,  nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra
-Depends: libgd3, libgeoip1, libpq5, libperl5.26
+Depends: libgd3, libgeoip1, libpq5, libperl5.26,  libexif12, libpng16-16, libwebp6
 Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua.
 
@@ -42,6 +42,6 @@ Provides: nginx
 Replaces: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra
 Architecture: any
 Conflicts: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra
-Depends: libgd3, libgeoip1, libpq5, libperl5.26
+Depends: libgd3, libgeoip1, libpq5, libperl5.26,  libexif12, libpng16-16, libwebp6
 Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info
