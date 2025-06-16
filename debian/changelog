@@ -1,3 +1,10 @@
+nginx-coolkit (1.28.0-1) unstable; urgency=medium
+
+  * upgraded nginx and openssl to current stable version
+  * added image orientation support for nginx_image_filter
+
+ --  Ivan Panchenko <wao@mail.ru>  Thu, 02 Jun 2025 02:00:00 +0300
+
 nginx-coolkit (1.26.2-1) unstable; urgency=medium
 
   * upgraded nginx and openssl to current stable version

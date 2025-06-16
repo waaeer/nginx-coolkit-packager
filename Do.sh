@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.26.2"               # 
+NGV="1.28.0"               # 
 
 ECHO="0.63"                # https://github.com/openresty/echo-nginx-module/releases
 LUAMOD="0.10.24"           # https://github.com/openresty/lua-nginx-module/releases
@@ -12,7 +12,9 @@ LUARLRUCACHE="0.13"        # https://github.com/openresty/lua-resty-lrucache/rel
 NDK="0.3.2"                # https://github.com/vision5/ngx_devel_kit/releases
 NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/releases
 SETMISC="0.33"             # https://github.com/openresty/set-misc-nginx-module/releases
-OPENSSL="3.4.0"
+OPENSSL="3.5.0"
+LIBGD="2.3.3"              #https://github.com/libgd/libgd/releases
+
 
 test -d work || mkdir work
 
@@ -50,8 +52,10 @@ et ngx_devel_kit         $NDK          https://github.com/simpl/ngx_devel_kit/ar
 et openssl               $OPENSSL      https://www.openssl.org/source/openssl-$OPENSSL.tar.gz
 et set-misc-nginx-module $SETMISC      https://github.com/openresty/set-misc-nginx-module/archive/v$SETMISC.tar.gz
 
+en libgd                          https://github.com/libgd/libgd/releases/download/gd-$LIBGD/libgd-$LIBGD.tar.gz
 eg ngx_postgres                   https://github.com/konstruxi/ngx_postgres.git
 # https://github.com/FRiCKLE/ngx_postgres/archive/$NGINXPGV.tar.gz 
+
 
 eg ngx_cache_purge                https://github.com/FRiCKLE/ngx_cache_purge 
 eg nginx-auth-ldap                https://github.com/kvspb/nginx-auth-ldap
@@ -83,6 +87,7 @@ cp -r lua-resty-lrucache/lib/resty/lrucache* nginx-$NGV/local/share/lua/5.1/rest
 
 
 
+
 ## make the tarball 
 test -d ../build || mkdir ../build
 
@@ -95,6 +100,14 @@ sudo apt-get install -y autotools-dev debhelper \
 sudo apt-get install -y libpq-dev 
 
 sudo apt-get -y install dh-systemd || true;  ## если нет - значит не нужно
+
+(
+  cd libgd-$LIBGD && patch -p1 < ../../gd-$LIBGD.patch && autoconf &&\
+   ./configure --with-exif --with-jpeg --with-png --with-heif --with-tiff --with-webp --without-freetype --without-fontconfig --without-xpm &&\
+   make && mv src/.libs/libgd.* ../../build/
+)
+
+
 
 cd ../build
 rm -rf nginx-$NGV

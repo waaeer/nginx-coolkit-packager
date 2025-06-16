@@ -43,6 +43,7 @@ debian_cflags  += -I$(shell pwd)/local/include/luajit-2.1
 debian_ldflags += -L$(shell pwd)/local/lib -lluajit-5.1
 openssl_source = --with-openssl=$(CURDIR)/add-modules/openssl
 
+debian_ldflags  += -L$(CURDIR)/.. -l:libgd.a -lm -lpng -ljpeg -lexif -ltiff -lwebp -lheif
 
 # configure flags
 configure_flags := \

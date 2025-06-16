@@ -20,7 +20,13 @@ Build-Depends: autotools-dev,
 		       libldap2-dev,	
 			   build-essential,
 			   libmd-dev,
-               libpq-dev
+               libpq-dev,
+			   libjpeg-dev,
+			   libpng-dev,
+               libheif-dev,
+			   libtiff-dev,
+               libwebp-dev,
+               libexif-dev
 
 Package: nginx-coolkit
 Provides: nginx
