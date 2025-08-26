@@ -102,18 +102,41 @@ fi
 sudo apt-get install -y autotools-dev debhelper \
  libexpat-dev  \
  libgeoip-dev liblua5.1-dev  libmhash-dev libpam0g-dev libpcre$PCREV-dev libperl-dev libssl-dev \
- libxslt1-dev po-debconf zlib1g-dev perl libldap2-dev libmd-dev libgd-dev
+ libxslt1-dev po-debconf zlib1g-dev perl libldap2-dev libmd-dev 
 sudo apt-get install -y libpq-dev 
 
 sudo apt-get -y install dh-systemd || true;  ## если нет - значит не нужно
 
+
+if [ "$RELEASE" = "trixie" ] ; then  
+  ## для сборки libgd с патчем нужно использовать старые версии autoconf и automake
+  echo 'deb-src http://deb.debian.org/debian stable main contrib non-free' > /etc/apt/sources.list.d/src.list
+  apt update
+  apt source libgd-dev
+  en automake http://ftp.gnu.org/gnu/automake/automake-1.16.tar.gz
+  en autoconf http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
+  (cd automake-1.16 && ./configure --path /usr/tmp && make install)
+  (cd autoconf-2.69 && ./configure --path /usr/tmp && make install)
+  (
+    cd libgd2-$LIBGD 
+    patch -p1 < ../../gd-$LIBGD.patch
+    PATH=/usr/tmp/bin:$PATH 
+    M4PATH=/usr/tmp/share/autoconf:/usr/tmp/share/aclocal-1.16:/usr/share/aclocal 
+    ACLOCAL_PATH=/usr/tmp/share/autoconf:/usr/tmp/share/aclocal-1.16:/usr/share/aclocal
+    aclocal
+    automake
+    autoconf
+    ./configure --with-exif --with-jpeg --with-png --with-heif --with-tiff --with-webp --without-freetype --without-fontconfig --without-xpm
+    make
+    mv src/.libs/libgd.* ../../build/
+  )
+else
 (
   cd libgd-$LIBGD && patch -p1 < ../../gd-$LIBGD.patch && autoconf &&\
    ./configure --with-exif --with-jpeg --with-png --with-heif --with-tiff --with-webp --without-freetype --without-fontconfig --without-xpm &&\
    make && mv src/.libs/libgd.* ../../build/
 )
-
-
+fi
 
 cd ../build
 rm -rf nginx-$NGV
