@@ -115,8 +115,8 @@ if [ "$RELEASE" = "trixie" ] ; then
   apt source libgd-dev
   en automake http://ftp.gnu.org/gnu/automake/automake-1.16.tar.gz
   en autoconf http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
-  (cd automake-1.16 && ./configure --path /usr/tmp && make install)
-  (cd autoconf-2.69 && ./configure --path /usr/tmp && make install)
+  (cd automake-1.16 && ./configure --prefix /usr/tmp && make install)
+  (cd autoconf-2.69 && ./configure --prefix /usr/tmp && make install)
   (
     cd libgd2-$LIBGD 
     patch -p1 < ../../gd-$LIBGD.patch
