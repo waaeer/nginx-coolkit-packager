@@ -120,9 +120,9 @@ if [ "$RELEASE" = "trixie" ] ; then
   (
     cd libgd2-$LIBGD 
     patch -p1 < ../../gd-$LIBGD.patch
-    PATH=/usr/tmp/bin:$PATH 
-    M4PATH=/usr/tmp/share/autoconf:/usr/tmp/share/aclocal-1.16:/usr/share/aclocal 
-    ACLOCAL_PATH=/usr/tmp/share/autoconf:/usr/tmp/share/aclocal-1.16:/usr/share/aclocal
+    export PATH=/usr/tmp/bin:$PATH 
+    export M4PATH=/usr/tmp/share/autoconf:/usr/tmp/share/aclocal-1.16:/usr/share/aclocal 
+    export ACLOCAL_PATH=/usr/tmp/share/autoconf:/usr/tmp/share/aclocal-1.16:/usr/share/aclocal
     aclocal
     automake
     autoconf
