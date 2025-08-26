@@ -93,9 +93,15 @@ test -d ../build || mkdir ../build
 
 tar -czf ../build/nginx-coolkit_$NGV.orig.tar.gz nginx-$NGV
 
+PCREV=3
+if [ "$RELEASE" = "trixie" ] ; then
+   PCREV=2
+fi
+
+
 sudo apt-get install -y autotools-dev debhelper \
  libexpat-dev  \
- libgeoip-dev liblua5.1-dev  libmhash-dev libpam0g-dev libpcre3-dev libperl-dev libssl-dev \
+ libgeoip-dev liblua5.1-dev  libmhash-dev libpam0g-dev libpcre$PCREV-dev libperl-dev libssl-dev \
  libxslt1-dev po-debconf zlib1g-dev perl libldap2-dev libmd-dev libgd-dev
 sudo apt-get install -y libpq-dev 
 
