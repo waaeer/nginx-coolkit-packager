@@ -12,7 +12,7 @@ LUARLRUCACHE="0.13"        # https://github.com/openresty/lua-resty-lrucache/rel
 NDK="0.3.2"                # https://github.com/vision5/ngx_devel_kit/releases
 NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/releases
 SETMISC="0.33"             # https://github.com/openresty/set-misc-nginx-module/releases
-OPENSSL="3.5.0"
+OPENSSL="3.5.2"
 LIBGD="2.3.3"              #https://github.com/libgd/libgd/releases
 
 
