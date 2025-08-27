@@ -1,0 +1,40 @@
+Source: nginx-coolkit
+Maintainer: Ivan Panchenko <wao@mail.ru>
+Section: httpd
+Priority: optional
+Standards-Version: 3.9.7
+Build-Depends: autotools-dev,
+               debhelper (>= 9),
+               dpkg-dev (>= 1.15.5),
+               libexpat-dev,
+               libgd-dev,
+               libgeoip-dev,
+               libmhash-dev,
+               libpam0g-dev,
+               libpcre2-dev,
+               libperl-dev,
+               libssl-dev,
+               libxslt1-dev,
+               po-debconf,
+               zlib1g-dev,
+		       libldap2-dev,	
+			   build-essential,
+               libpq-dev
+
+Package: nginx-coolkit
+Provides: nginx
+Replaces: nginx, nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra
+Architecture: any
+Conflicts: nginx,  nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra
+Depends: libgeoip1, libpq5, libperl5.40, libpcre3,  libexif12, libpng16-16, libwebp7, libheif1, libjpeg62-turbo, libtiff6
+Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
+ including the old nginx-upload module, postgres module, embedded perl and lua.
+
+Package: nginx-coolkit-dbg
+Provides: nginx
+Replaces: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra
+Architecture: any
+Conflicts: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra
+Depends: libgeoip1, libpq5, libperl5.40,  libexif12, libpng16-16, libwebp7, libheif1, libjpeg62-turbo, libtiff6
+Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
+ including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info

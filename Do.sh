@@ -4,12 +4,12 @@ set -e -u
 NGV="1.28.0"               # 
 
 ECHO="0.63"                # https://github.com/openresty/echo-nginx-module/releases
-LUAMOD="0.10.24"           # https://github.com/openresty/lua-nginx-module/releases
-LUARJIT2="2.1-20220915"    # https://github.com/openresty/luajit2/releases
+LUAMOD="0.10.28"           # https://github.com/openresty/lua-nginx-module/releases
+LUARJIT2="2.1-20250529"    # https://github.com/openresty/luajit2/releases
 #  Required by Lua module since 0.10.16
-LUARCORE="0.1.26"          # https://github.com/openresty/lua-resty-core/releases
-LUARLRUCACHE="0.13"        # https://github.com/openresty/lua-resty-lrucache/releases
-NDK="0.3.2"                # https://github.com/vision5/ngx_devel_kit/releases
+LUARCORE="0.1.31"          # https://github.com/openresty/lua-resty-core/releases
+LUARLRUCACHE="0.15"        # https://github.com/openresty/lua-resty-lrucache/releases
+NDK="0.3.4"                # https://github.com/vision5/ngx_devel_kit/releases
 NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/releases
 SETMISC="0.33"             # https://github.com/openresty/set-misc-nginx-module/releases
 OPENSSL="3.5.2"
@@ -112,6 +112,7 @@ if [ "$RELEASE" = "trixie" ] ; then
   ## для сборки libgd с патчем нужно использовать старые версии autoconf и automake
   echo 'deb-src http://deb.debian.org/debian stable main contrib non-free' > /etc/apt/sources.list.d/src.list
   apt update
+  rm -rf libgd2-$LIBGD
   apt source libgd-dev
   en automake http://ftp.gnu.org/gnu/automake/automake-1.16.tar.gz
   en autoconf http://ftp.gnu.org/gnu/autoconf/autoconf-2.69.tar.gz
