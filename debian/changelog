@@ -1,3 +1,10 @@
+nginx-coolkit (1.28.0-2) unstable; urgency=medium
+
+  * debian 13 compatibility;
+  * components upgrade
+
+ --  Ivan Panchenko <wao@mail.ru>  Thu, 05 Sep 2025 02:00:00 +0300
+
 nginx-coolkit (1.28.0-1) unstable; urgency=medium
 
   * upgraded nginx and openssl to current stable version

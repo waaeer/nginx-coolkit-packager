@@ -18,7 +18,6 @@ Build-Depends: autotools-dev,
                libxslt1-dev,
                po-debconf,
                zlib1g-dev,
-               luajit,
 	       libldap2-dev,	
 			build-essential,
                libpq-dev
