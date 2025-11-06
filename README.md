@@ -10,7 +10,7 @@ The latest version of the stable branch is intended to be used.
 ## Nginx modules
 
 - [http\_perl\_module](https://nginx.org/en/docs/http/ngx_http_perl_module.html) Allows perl scripting in nginx config.
-- [http\_ssl\_module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) Provides the necessary support for HTTPS. Linked with latest table version of OpenSSL.
+- [http\_ssl\_module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) Provides the necessary support for HTTPS. Linked with latest stable version of OpenSSL.
 - [http\_stub\_status\_module](https://nginx.org/en/docs/http/ngx_http_stub_status_module.html). Provides access to basic status information.
 - [http\_realip\_module](https://nginx.org/en/docs/http/ngx_http_realip_module.html) Is used to change the client address and optional port to those sent in the specified header field (like X-Forwarded-For). To be used behind a proxy.
 - [http_auth_request_module](https://nginx.org/en/docs/http/ngx_http_auth_request_module.html) Implements client authentication based on the result of a subrequest.
