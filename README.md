@@ -18,7 +18,7 @@ The latest version of the stable branch is intended to be used.
 - [http_dav_module](https://nginx.org/en/docs/http/ngx_http_dav_module.html) Provides WebDAV protocol.
 - [http_flv_module](https://nginx.org/en/docs/http/ngx_http_flv_module.html) Provides FLV video pseudo-streaming.
 - [http_mp4_module](https://nginx.org/en/docs/http/ngx_http_mp4_module.html) Provides MP4 video pseudo-streaming.
-- [http_geoip_module](https://nginx.org/en/docs/http/ngx_http_mp4_module.html) Provides IP georesolvibg with precompiled MaxMind GeoIp database.
+- [http_geoip_module](https://nginx.org/en/docs/http/ngx_http_mp4_module.html) Provides IP georesolving with precompiled MaxMind GeoIp database.
 - [http_gunzip_module](https://nginx.org/en/docs/http/ngx_http_gunzip_module.html) Decompresses responses with ``Content-Encoding: gzip`` for clients that do not support ``gzip`` encoding method.
 - [http_gzip_static_module](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html) Allows sending precompressed files with the ``.gz`` filename extension instead of regular files. 
 - [http_image_filter_module](https://nginx.org/en/docs/http/ngx_http_image_filter_module.html) Scales images in JPEG, GIF, PNG, and WebP formats. Statically linked with
@@ -29,7 +29,7 @@ The latest version of the stable branch is intended to be used.
 
 
 - [echo](https://github.com/openresty/echo-nginx-module) Brings "echo", "sleep", "time", "exec" and more shell-style goodies to Nginx config file;
-- [lua](https://github.com/openresty/lua-nginx-module) Enables Lua scripting in Nginx config file using [luajit2] (https://github.com/openresty/luajit2/) interpreter;
+- [lua](https://github.com/openresty/lua-nginx-module) Enables Lua scripting in Nginx config file using [luajit2](https://github.com/openresty/luajit2/) interpreter;
 - [set-misc](https://github.com/openresty/set-misc-nginx-module) Various set_xxx directives added to nginx's rewrite module (md5/sha1, sql/json quoting, and many more);
 - [ngx\_postgres](https://github.com/konstruxi/ngx_postgres) Allows Nginx to communicate directly with PostgreSQL database;
 - [cache_purge](https://github.com/FRiCKLE/ngx_cache_purge) Adds ability to purge content from FastCGI, proxy, SCGI and uWSGI caches;
