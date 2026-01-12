@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.28.0"               # 
+NGV="1.28.1"               # 
 
 ECHO="0.63"                # https://github.com/openresty/echo-nginx-module/releases
 LUAMOD="0.10.28"           # https://github.com/openresty/lua-nginx-module/releases

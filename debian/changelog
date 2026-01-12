@@ -1,3 +1,9 @@
+nginx-coolkit (1.28.1-1) unstable; urgency=medium
+
+  * upgraded nginx
+
+ --  Ivan Panchenko <wao@mail.ru>  Mon, 12 Jan 2026 14:00:00 +0300
+
 nginx-coolkit (1.28.0-3) unstable; urgency=medium
 
   * pcre2 compatibility for nginx_upload;
