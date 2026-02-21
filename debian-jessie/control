@@ -26,14 +26,14 @@ Build-Depends: autotools-dev,
 
 Package: nginx-coolkit
 Architecture: any
-Conflicts: nginx, nginx-common, nginx-coolkit-dbg
+Conflicts: nginx, nginx-common, nginx-coolkit-dbg, luajit2
 Depends: luajit, libgd3, libgeoip1, liblua5.1-0, libpq5
 Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua.
 
 Package: nginx-coolkit-dbg
 Architecture: any
-Conflicts: nginx, nginx-common, nginx-coolkit
+Conflicts: nginx, nginx-common, nginx-coolkit, luajit2
 Depends: luajit, libgd3, libgeoip1, liblua5.1-0, libpq   
 Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info

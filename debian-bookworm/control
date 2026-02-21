@@ -25,7 +25,7 @@ Package: nginx-coolkit
 Provides: nginx
 Replaces: nginx, nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra
 Architecture: any
-Conflicts: nginx,  nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra
+Conflicts: nginx,  nginx-coolkit-dbg, nginx-common, nginx-full, nginx-light, nginx-extra, luajit2
 Depends: libgeoip1, libpq5, libperl5.36, libpcre3,  libexif12, libpng16-16, libwebp7, libheif1, libjpeg62-turbo, libtiff6
 Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua.
@@ -34,7 +34,7 @@ Package: nginx-coolkit-dbg
 Provides: nginx
 Replaces: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra
 Architecture: any
-Conflicts: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra
+Conflicts: nginx, nginx-coolkit, nginx-common, nginx-full, nginx-light, nginx-extra, luajit2
 Depends: libgeoip1, libpq5, libperl5.36,  libexif12, libpng16-16, libwebp7, libheif1, libjpeg62-turbo, libtiff6
 Description: A special build of Igor Sysoev's Nginx Web/Proxy Server
  including the old nginx-upload module, postgres module, embedded perl and lua. Contains debug info

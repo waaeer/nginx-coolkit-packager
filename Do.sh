@@ -5,7 +5,7 @@ NGV="1.28.2"               #
 
 ECHO="0.63"                # https://github.com/openresty/echo-nginx-module/releases
 LUAMOD="0.10.28"           # https://github.com/openresty/lua-nginx-module/releases
-LUARJIT2="2.1-20250529"    # https://github.com/openresty/luajit2/releases
+LUARJIT2="2.1-20250826"    # https://github.com/openresty/luajit2/releases
 #  Required by Lua module since 0.10.16
 LUARCORE="0.1.31"          # https://github.com/openresty/lua-resty-core/releases
 LUARLRUCACHE="0.15"        # https://github.com/openresty/lua-resty-lrucache/releases
