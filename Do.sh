@@ -3,14 +3,14 @@ set -e -u
 
 NGV="1.28.2"               # 
 
-ECHO="0.63"                # https://github.com/openresty/echo-nginx-module/releases
-LUAMOD="0.10.28"           # https://github.com/openresty/lua-nginx-module/releases
+ECHO="0.64"                # https://github.com/openresty/echo-nginx-module/tags
+LUAMOD="0.10.29R2"         # https://github.com/openresty/lua-nginx-module/tags
 LUARJIT2="2.1-20250826"    # https://github.com/openresty/luajit2/releases
 #  Required by Lua module since 0.10.16
-LUARCORE="0.1.31"          # https://github.com/openresty/lua-resty-core/releases
+LUARCORE="0.1.32R1"        # https://github.com/openresty/lua-resty-core/releases
 LUARLRUCACHE="0.15"        # https://github.com/openresty/lua-resty-lrucache/releases
 NDK="0.3.4"                # https://github.com/vision5/ngx_devel_kit/releases
-NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/releases
+NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/tags
 SETMISC="0.33"             # https://github.com/openresty/set-misc-nginx-module/releases
 OPENSSL="3.6.1"            # https://github.com/openssl/openssl
 LIBGD="2.3.3"              # https://github.com/libgd/libgd/releases
