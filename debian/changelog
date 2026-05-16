@@ -1,3 +1,9 @@
+nginx-coolkit (1.28.3-1) unstable; urgency=medium
+
+  * upgraded nginx and openssl
+
+ --  Ivan Panchenko <wao@mail.ru>  Sat, 16 Feb 2026 22:21:00 +0300
+
 nginx-coolkit (1.28.2-1) unstable; urgency=medium
 
   * upgraded nginx

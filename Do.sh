@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
 
-NGV="1.28.2"               # 
+NGV="1.28.3"               # 
 
 ECHO="0.64"                # https://github.com/openresty/echo-nginx-module/tags
 LUAMOD="0.10.29R2"         # https://github.com/openresty/lua-nginx-module/tags
@@ -12,7 +12,7 @@ LUARLRUCACHE="0.15"        # https://github.com/openresty/lua-resty-lrucache/rel
 NDK="0.3.4"                # https://github.com/vision5/ngx_devel_kit/releases
 NGINXPGV="1.0rc7"          # https://github.com/FRiCKLE/ngx_postgres/tags
 SETMISC="0.33"             # https://github.com/openresty/set-misc-nginx-module/releases
-OPENSSL="3.6.1"            # https://github.com/openssl/openssl
+OPENSSL="3.6.2"            # https://github.com/openssl/openssl
 LIBGD="2.3.3"              # https://github.com/libgd/libgd/releases
 
 
